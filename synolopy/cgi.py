@@ -1,8 +1,8 @@
 import requests
 
-from Queue import Queue
-from urlparse import urljoin
-from urllib import urlencode
+from queue import Queue
+from urllib.parse import urljoin
+from urllib.parse import urlencode
 
 from synolopy.errors import *
 
@@ -169,7 +169,7 @@ class CGIFactory(object):
     @staticmethod
     def _build_path(data, parent):
         path_set = data['PATH'] if 'PATH' in data else dict()
-        for path, content in path_set.iteritems():
+        for path, content in path_set.items():
             auth = content['AUTH'] if 'AUTH' in content else False
             pe = PathElement(path, parent, auth)
             CGIFactory._build_path(content, pe)
@@ -178,7 +178,7 @@ class CGIFactory(object):
     @staticmethod
     def _build_cgi(data, parent):
         cgi_set = data['CGI'] if 'CGI' in data else dict()
-        for cgi, content in cgi_set.iteritems():
+        for cgi, content in cgi_set.items():
             CGI(cgi, parent, **content)
 
 
